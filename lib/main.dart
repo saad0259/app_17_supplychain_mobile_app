@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:location/location.dart';
+import 'business.dart';
+import 'cutomMap.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,8 +15,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Google Maps Demo',
       debugShowCheckedModeBanner: false,
       home: MapSample(),
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
+      theme: ThemeData.dark(),
+      // darkTheme: ThemeData.dark(),
     );
   }
 }
@@ -64,10 +66,10 @@ class MapSampleState extends State<MapSample> {
       child: ApiData(),
     ),
     Center(
-      child: Text(
-        'Index 2: School',
-        style: optionStyle,
-      ),
+      child:SecondMap(),
+    ),
+    Center(
+      child:CustomMap(),
     ),
   ];
 
@@ -101,18 +103,22 @@ class MapSampleState extends State<MapSample> {
   Widget build(BuildContext context) {
     return new Scaffold(
       drawer: Drawer(
+
         child: ListView(
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: <Widget>[
             UserAccountsDrawerHeader(
+              decoration: BoxDecoration(
+                color: Color(0xff009900),
+              ),
               accountName: Text("Saad Shafiq"),
               accountEmail: Text("saadshafiq259@gmail.com"),
               currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.orange,
+                backgroundColor: Colors.white,
                 child: Text(
-                  "A",
-                  style: TextStyle(fontSize: 40.0),
+                  "S",
+                  style: TextStyle(fontSize: 40.0, color: Color(0xff009900)),
                 ),
               ),
             ),
@@ -139,7 +145,7 @@ class MapSampleState extends State<MapSample> {
       ),
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text('Hello'),
+        title: Text('Track Dealers'),
         backgroundColor:Color(0xff009900) ,
       ),
       body: Container(
@@ -151,14 +157,22 @@ class MapSampleState extends State<MapSample> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
+            backgroundColor: Color(0xff009900),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
             label: 'Business',
+            backgroundColor: Color(0xff009900),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
             label: 'School',
+            backgroundColor: Color(0xff009900),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.map),
+            label: 'Map',
+            backgroundColor: Color(0xff009900),
           ),
         ],
         currentIndex: _selectedIndex,
